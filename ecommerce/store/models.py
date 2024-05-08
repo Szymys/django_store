@@ -8,14 +8,15 @@ class Category(models.Model):
     slug = models.SlugField(max_length=250, unique=True)
 
 
-class Meta:
+# ZMIANA NAZWY BO INNACZEJ WYSWIETLA CATEGORYS
+    class Meta:
 
-    verbose_name_plural = 'categories'
+        verbose_name_plural = 'categories'
 
+# WYSWIETLA NAZWE A NIE NP. CATEGORY (1)
+    def __str__(self):
 
-def __str__(self):
-
-    return self.name
+        return self.name
     
 
 
@@ -31,17 +32,18 @@ class Product(models.Model):
 
     price = models.DecimalField(max_digits=4, decimal_places=2)
 
+# PRZENOSI ZDJECIA DO FOLDERU MEDIA 
     image = models.ImageField(upload_to='images/')
 
 
-class Meta:
+    class Meta:
 
-    verbose_name_plural = 'products'
+        verbose_name_plural = 'products'
 
 
-def __str__(self):
+    def __str__(self):
 
-    return self.name
+        return self.title
 
 
 
