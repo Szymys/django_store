@@ -64,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'store.views.categories',  #dodanie views z folderu store
             ],
         },
     },
@@ -122,7 +123,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 
+MEDIA_URL = '/media/'
 
+MEDIA_ROOT = BASE_DIR / 'static/media'
 
 
 
