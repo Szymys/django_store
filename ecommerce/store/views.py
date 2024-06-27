@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from . models import Category, Product
-
+from django.shortcuts import get_object_or_404
 
 
 def store(request):
@@ -22,6 +22,26 @@ def categories(request):
 
 
 
+def list_category(request, category_slug=None):
+
+    category = get_object_or_404(Category, slug=category_slug)
+
+    products = Product.objects.filter(category=category)
+
+    return render(request, 'store/list-category.html', {'category':category, 'products':products})
+
+
+
+
+
+
+def product_info(request, product_slug):
+
+    product = get_object_or_404(Product, slug=product_slug)
+    
+    context = {'product': product}
+
+    return render(request, 'store/product-info.html', context)
 
 
 
