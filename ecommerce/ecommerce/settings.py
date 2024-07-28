@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'store',    #Django app
+
+    'cart'      #Django app
 ]
 
 MIDDLEWARE = [
@@ -65,6 +67,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'store.views.categories',  #dodanie views z folderu store
+                'cart.context_processors.cart',   #context_processors bo tak sie powyzej nazywaja
             ],
         },
     },
