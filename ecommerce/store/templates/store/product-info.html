@@ -98,10 +98,13 @@
 </div>
 
 <script>
-
+//AJAX -  NA ZYWO ODSWIEZA MI KOSZYK
     $(document).on('click', '#add-button', function(e){
 
+
+    // CSRF TOEKN TUTAJ A NIE JAK NA KURSIE ???!!!
         e.preventDefault();
+        csrfmiddlewaretoken:"{{ csrf_token }}"
 
         $.ajax({
 
@@ -111,7 +114,7 @@
 
                 product_id: $('#add-button').val(),
                 product_quantity: $('#select option:selected').text(),
-                csrfmiddlewaretoken: "{{csrf_token}}",
+                csrfmiddlewaretoken: "{{ csrf_token }}",
                 action: 'post'
 
 
@@ -119,11 +122,14 @@
 
             success: function(json){
 
-                console.log(json)
+                //console.log(json)
+                
+                document.getElementById("cart-qty").textContent = json.qty
 
             },
 
             error: function(xhr, errmsg, err){
+                
 
             }
 
